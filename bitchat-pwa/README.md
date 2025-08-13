@@ -1,0 +1,4 @@
+Run locally
+```
+./server.py
+```
