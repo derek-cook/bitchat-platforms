@@ -5,14 +5,16 @@ A collection of apps that aim to be interoperable with the [bitchat](https://git
 
 The purpose is to explore different ways of communicating over bluetooth in a decentralized, offline way. 
 
-This is an ***experimental*** proof of concept. Feature parity with the mobile app is not 100%. Security may be flawed, and other features like encryption are not yet implemented. The following notes may have some incorrect assumptions
+This is an ***experimental*** proof of concept. Feature parity with the mobile app is not 100%. Security may be flawed, and other features like encryption are not yet implemented. The following notes may have some incorrect assumptions.
 
 ## Electron
 What works ✅
 * Can send messages to multiple nearby device running the bitchat iOS app without a connection prompt.
+
 What doesn't work yet ⚠️
 * Has to explicitly connect to a nearby device to listen and receive messages.
 * Direct messaging
+
 Considerations
 * The electron api allows you to connect to devices without a user prompt (like in the web app), so if you want that control you'll have to bring your own UI.
 * Uses the Web Bluetooth api.
@@ -20,13 +22,16 @@ Considerations
 
 
 ## PWA (progressive web app)
-Honestly this one is impractical so far due to browser security limitations.
+This one is impractical so far due to browser security limitations.
+
 What works ✅
 * After a browser prompt to connect, you can send a message to one device at a time.
+
 What doesn't work yet ⚠️
 * pretty much everything else
+
 Considerations
-* Service workers don't have access to the bluetooth api.
+* Browser apps can only act as clients, so they lack the ability to advertise as a gatt server.
 * The BT connection requires https.
 * An initial visit online is required to cache files for offline use.
 
