@@ -48,6 +48,8 @@ Considerations
 * Service workers don't have access to the bluetooth api.
 * `bitchatFunctions.js` and `index.html` are essentially duplicated from the electron app for isolation purposes.
 
+## CLI
+See the readme in `/bitchat-cli`
 
 ## To explore
 * IoT/microcontrollers - Devices like an ESP32 are pretty easy to implement BT features on. You'd need some interface (keyboard/display), but you can get a proof of concept with some hardcoding and serial monitor. There's some interesting related work on Meshtastic/LoRa/BLE mesh.
