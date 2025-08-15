@@ -1,1 +1,0 @@
-To run locally, use [electron fiddle](https://www.electronjs.org/fiddle) or some other electron tool.

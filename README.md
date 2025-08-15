@@ -5,39 +5,49 @@ A collection of apps that aim to be interoperable with the [bitchat](https://git
 
 The purpose is to explore different ways of communicating over bluetooth in a decentralized, offline way. 
 
-This is an ***experimental*** proof of concept. Feature parity with the mobile app is not 100%. Security may be flawed, and other features like encryption are not yet implemented. The following notes may have some incorrect assumptions.
+This is an ***experimental*** proof of concept. Please note:
+* Feature parity with the mobile app is very low. Some assumptions here are not correct about how bitchat works.
+* I intentionally used as few libraries as possible to keep the focus on the capabilities of the platform itself.
+* `bitchatFunctions.js` and `index.html` are essentially duplicated across platforms for isolation purposes.
+* Don't use in situations that are sensitive to security or privacy. Bluetooth communication works as-is without encryption.
+
+✅ What works
+**Broadcast message** - Send to all -> for each nearby bitchat device: connect, send, and disconnect
+**Single device direct message** - Connect to Device -> Send to connected -> sends and retains connection
+**Listen to incoming messages** - Connect to Device -> Start Listening
+
+⚠️ Needs work
+**Direct Messages** - Saved contacts (Network bar in the mobile app) is not implemented. Direct messages, although visible only to the recipient, show in the main chat rather than in a separate DM window.
+**Connection prompt** - the PWA requires an explicit device select prompt due to browser security restrictions. This might be ok if it can use a helper app or relay via another single device.
+**Broadcast connections** - This could probably be changed so that a device only requires one connection which relays messages to other devices, rather than repeating for each nearby device.
+**Encryption/Handshake** - not implemented
 
 ## Electron
-What works ✅
-* Can send messages to multiple nearby device running the bitchat iOS app without a connection prompt.
-
-What doesn't work yet ⚠️
-* Has to explicitly connect to a nearby device to listen and receive messages.
-* Direct messaging
+To run locally
+```
+npx electron ./bitchat-electron/main.js
+```
 
 Considerations
-* The electron api allows you to connect to devices without a user prompt (like in the web app), so if you want that control you'll have to bring your own UI.
-* Uses the Web Bluetooth api.
+* Uses the Web Bluetooth api and electron api.
 * Some operating systems require a pin to confirm connection.
+* The electron api allows you to connect to devices without a device select prompt (unlike in a browser), so if you want that control you'll have to bring your own UI.
 
 
 ## PWA (progressive web app)
-This one is impractical so far due to browser security limitations.
-
-What works ✅
-* After a browser prompt to connect, you can send a message to one device at a time.
-
-What doesn't work yet ⚠️
-* pretty much everything else
+To run locally at `https://localhost:8443`
+```
+./bitchat-pwa/server.py
+```
 
 Considerations
 * Browser apps can only act as clients, so they lack the ability to advertise as a gatt server.
-* The BT connection requires https.
+* BT connections require https.
 * An initial visit online is required to cache files for offline use.
+* Service workers don't have access to the bluetooth api.
 
 
-## Cases to explore
-* IoT/microcontrollers - Devices like an ESP32 are pretty easy to implement BT features on. You'd need some interface to type/display, but a PoC can use a sketch with some hardcoding. There's some interesting related work on Meshtastic/LoRa/BLE mesh.
+## To explore
+* IoT/microcontrollers - Devices like an ESP32 are pretty easy to implement BT features on. You'd need some interface (keyboard/display), but you can get a proof of concept with some hardcoding and serial monitor. There's some interesting related work on Meshtastic/LoRa/BLE mesh.
 * a bitchat CLI - initial use of a python script seems promising, see [bitchat-spam](https://github.com/BrownFineSecurity/bitchat-spam)
 * security/anti-spam, especially for scripts.
-* app clips
