@@ -12,14 +12,14 @@ This is an ***experimental*** proof of concept. Please note:
 
 ### What works ✅
 - **Broadcast message**: Send to all -> for each nearby bitchat device: connect, send, and disconnect.
-* **Send to device**: Connect to Device -> Send to connected -> sends and retains connection.  
-* **Listen to device**: Connect to Device -> Start Listening -> receives messages from that device
+- **Send to device**: Connect to Device -> Send to connected -> sends and retains connection.  
+- **Listen to device**: Connect to Device -> Start Listening -> receives messages from that device
 
 ### Needs work ⚠️
-* **Direct Messages**: Saved contacts (Network bar in the mobile app) is not implemented. Direct messages, although sent only to the connected device, show in the main chat rather than in a separate DM window.
-* **Connection prompt**: The PWA requires an explicit device select prompt due to browser security restrictions. This might be ok if it can use a helper app or relay via another single device.
-* **Broadcast connections**: This isn't quite a "mesh" network. Ideally it would require one connection and relay messages rather than repeating the process for each nearby device.
-* **Encryption/Handshake**: not implemented
+- **Direct Messages**: Saved contacts (Network bar in the mobile app) is not implemented. Direct messages, although sent only to the connected device, show in the main chat rather than in a separate DM window.
+- **Connection prompt**: The PWA requires an explicit device select prompt due to browser security restrictions. This might be ok if it can use a helper app or relay via another single device.
+- **Broadcast connections**: This isn't quite a "mesh" network. Ideally it would require one connection and relay messages rather than repeating the process for each nearby device.
+- **Encryption/Handshake**: not implemented
 
 ## Electron
 To run locally
