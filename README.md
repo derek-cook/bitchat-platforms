@@ -37,7 +37,8 @@ Considerations
 ## PWA (progressive web app)
 To run locally at `https://localhost:8443`
 ```
-./bitchat-pwa/server.py
+pip install cryptography # for https support
+./bitchat-pwa/server.py  # run the server
 ```
 \
 Considerations
