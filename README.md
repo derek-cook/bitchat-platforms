@@ -1,7 +1,8 @@
 
 # bitchat-platforms
 
-A collection of apps that aim to be interoperable with the [bitchat](https://github.com/permissionlesstech/bitchat/tree/main) mobile app.
+A collection of apps that aim to be interoperable with the [bitchat](https://github.com/permissionlesstech/bitchat/tree/main) mobile app.  
+![Kapture 2025-08-14 at 18 55 58](https://github.com/user-attachments/assets/ab00e383-d5a5-4dff-b9d9-f2e117d07b19)
 
 The purpose is to explore different ways of communicating over bluetooth in a decentralized, offline way. 
 
